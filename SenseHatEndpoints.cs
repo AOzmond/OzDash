@@ -1,6 +1,8 @@
 using Iot.Device.SenseHat;
 using UnitsNet;
 
+namespace OzDash;
+
 public static class SenseHatEndpoints
 {
     public static IEndpointRouteBuilder MapSenseHatEndpoints(this IEndpointRouteBuilder app)
@@ -12,17 +14,17 @@ public static class SenseHatEndpoints
 
 public sealed class SenseHatReader : IDisposable
 {
-    private readonly SenseHat senseHat = new();
-    private readonly object gate = new();
+    private readonly SenseHat _senseHat = new();
+    private readonly Lock _gate = new();
 
     public SenseHatReading Read()
     {
-        lock (gate)
+        lock (_gate)
         {
-            var tempValue = senseHat.Temperature;
-            var temp2Value = senseHat.Temperature2;
-            var pressureValue = senseHat.Pressure;
-            var humidityValue = senseHat.Humidity;
+            Temperature tempValue = _senseHat.Temperature;
+            Temperature temp2Value = _senseHat.Temperature2;
+            Pressure pressureValue = _senseHat.Pressure;
+            RelativeHumidity humidityValue = _senseHat.Humidity;
 
             return new SenseHatReading(
                 TimestampUtc: DateTimeOffset.UtcNow,
@@ -35,7 +37,7 @@ public sealed class SenseHatReader : IDisposable
 
     public void Dispose()
     {
-        senseHat.Dispose();
+        _senseHat.Dispose();
     }
 }
 
