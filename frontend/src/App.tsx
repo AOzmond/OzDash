@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useEffect, useState } from "react"
+import "./App.css"
 
 type SenseHatReading = {
   timestampUtc: string
@@ -15,7 +15,7 @@ type SenseHatReading = {
   dewPointC: number
 }
 
-const API_URL = '/api/sensehat'
+const API_URL = "/api/sensehat"
 
 function App() {
   const [reading, setReading] = useState<SenseHatReading | null>(null)
@@ -34,7 +34,7 @@ function App() {
         setReading(data)
         setError(null)
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load Sense HAT data')
+        setError(err instanceof Error ? err.message : "Failed to load Sense HAT data")
       }
     }
 
@@ -53,7 +53,7 @@ function App() {
   }
 
   return (
-    <main style={{ padding: 24, textAlign: 'left' }}>
+    <main style={{ padding: 24, textAlign: "left" }}>
       <h1>Sense HAT</h1>
       <p>Last update: {new Date(reading.timestampUtc).toLocaleTimeString()}</p>
       <ul>

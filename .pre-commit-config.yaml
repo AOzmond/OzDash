@@ -1,0 +1,45 @@
+repos:
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-yaml
+
+  # Frontend formatting
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        files: ^frontend/
+        additional_dependencies:
+          - prettier@3.6.2
+
+  - repo: local
+    hooks:
+      - id: oxlint
+        name: oxlint
+        entry: npx oxlint
+        language: system
+        pass_filenames: true
+        files: ^frontend/.*\.(ts|tsx|js|jsx)$
+
+      - id: dotnet-format
+        name: dotnet format
+        entry: scripts/dotnet-hook.sh
+        args:
+          - format
+          - --verify-no-changes
+        language: system
+        pass_filenames: false
+
+      - id: dotnet-build
+        name: dotnet build
+        entry: scripts/dotnet-hook.sh
+        args:
+          - build
+          - --nologo
+        language: system
+        pass_filenames: false
