@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react"
-import "./App.css"
 
 type SenseHatReading = {
   timestampUtc: string
   temperature1C: number
   temperature2C: number
   pressureHpa: number
-  altitudeM: number
-  acceleration: string
-  angularRate: string
-  magneticInduction: string
   humidityPercent: number
-  heatIndexC: number
-  dewPointC: number
 }
 
 const API_URL = "/api/sensehat"
@@ -60,13 +53,7 @@ function App() {
         <li>Temperature 1: {reading.temperature1C.toFixed(1)} °C</li>
         <li>Temperature 2: {reading.temperature2C.toFixed(1)} °C</li>
         <li>Pressure: {reading.pressureHpa.toFixed(2)} hPa</li>
-        <li>Altitude: {reading.altitudeM.toFixed(2)} m</li>
         <li>Humidity: {reading.humidityPercent.toFixed(1)}%</li>
-        <li>Heat index: {reading.heatIndexC.toFixed(1)} °C</li>
-        <li>Dew point: {reading.dewPointC.toFixed(1)} °C</li>
-        <li>Acceleration: {reading.acceleration}</li>
-        <li>Angular rate: {reading.angularRate}</li>
-        <li>Magnetic induction: {reading.magneticInduction}</li>
       </ul>
     </main>
   )
