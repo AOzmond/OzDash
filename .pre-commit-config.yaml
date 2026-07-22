@@ -21,7 +21,7 @@ repos:
     hooks:
       - id: oxlint
         name: oxlint
-        entry: npx oxlint
+        entry: bunx oxlint
         language: system
         pass_filenames: true
         files: ^frontend/.*\.(ts|tsx|js|jsx)$
