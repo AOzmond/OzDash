@@ -11,4 +11,12 @@
     <PackageReference Include="Iot.Device.Bindings" Version="4.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="frontend\public\favicon.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="frontend\public\" />
+  </ItemGroup>
+
 </Project>
