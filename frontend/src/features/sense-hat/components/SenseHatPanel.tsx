@@ -1,6 +1,7 @@
 import type { TemperatureUnit } from "../../../shared/temperature"
 import { formatTemperature } from "../../../shared/temperature"
-import { ThermometerIcon } from "../../../shared/icons/ThermometerIcon"
+import { SvgIcon } from "../../../shared/components/SvgIcon"
+import thermometerIcon from "../assets/icons/thermometer.svg"
 import type { SenseHatReading } from "../types"
 
 type SenseHatPanelProps = {
@@ -30,7 +31,7 @@ export function SenseHatPanel({ temperatureUnit, reading, error }: SenseHatPanel
             >
               {formatTemperature(averageTemperatureC, temperatureUnit)}
             </p>
-            <ThermometerIcon />
+            <SvgIcon src={thermometerIcon} className="temperature-icon" label="Indoor temperature" />
           </div>
           <div className="secondary-stats">
             <div className="humidity-stat">
