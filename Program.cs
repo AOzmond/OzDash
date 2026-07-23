@@ -1,20 +1,14 @@
-using OzDash;
+using OzDash.Features.SenseHat;
+using OzDash.Features.Weather;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<SenseHatReader>();
-builder.Services.AddHttpClient<OpenMeteoWeatherClient>(client =>
-{
-    client.BaseAddress = new Uri("https://api.open-meteo.com/");
-});
-builder.Services.AddHttpClient<OpenMeteoGeocodingClient>(client =>
-{
-    client.BaseAddress = new Uri("https://geocoding-api.open-meteo.com/");
-});
+builder.Services.AddSenseHatFeature();
+builder.Services.AddWeatherFeature();
 
 WebApplication app = builder.Build();
 
 app.MapSenseHatEndpoints();
-app.MapOpenMeteoEndpoints();
+app.MapWeatherEndpoints();
 
 app.Run("http://0.0.0.0:5000");
