@@ -1,6 +1,9 @@
 .app-shell {
   padding: 24px;
   text-align: left;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-header {
@@ -13,27 +16,150 @@
 
 .panels {
   display: flex;
+  width: 100%;
   gap: 32px;
-  align-items: flex-start;
+  align-items: stretch;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .panel {
-  min-width: 280px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  height: 280px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 40px;
+}
+
+.panel-stats {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.temperature-stat {
+  margin: 16px 0 0;
+  color: var(--text-h);
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -1.2px;
+}
+
+.humidity-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: auto;
+}
+
+.secondary-stats {
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+  margin-top: auto;
+}
+
+.secondary-stats .humidity-stat {
+  margin-top: 0;
+}
+
+.pressure-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-value {
+  color: var(--text-h);
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.stat-label {
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.last-updated {
+  margin-top: 12px;
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.panel-message {
+  margin-top: 16px;
 }
 
 .zip-form {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
 }
 
 .zip-input {
-  flex: 1 1 auto;
+  box-sizing: border-box;
+  width: 92px;
   padding: 8px 10px;
 }
 
 .zip-submit,
 .unit-toggle {
   padding: 8px 12px;
+}
+
+.temperature-advice {
+  box-sizing: border-box;
+  width: 712px;
+  max-width: 100%;
+  margin-top: 24px;
+  padding: 16px 18px;
+  border: 1px solid;
+  border-radius: 8px;
+}
+
+.temperature-advice--info {
+  color: #1e5b8f;
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.temperature-advice--warn {
+  color: #8a4b08;
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  .temperature-advice--info {
+    color: #93c5fd;
+  }
+
+  .temperature-advice--warn {
+    color: #fcd34d;
+  }
+}
+
+@media (max-width: 420px) {
+  .panel {
+    width: 100%;
+  }
+
+  .panel-header {
+    flex-direction: column;
+  }
 }

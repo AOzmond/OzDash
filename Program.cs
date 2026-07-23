@@ -3,7 +3,7 @@ using OzDash.Features.Weather;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSenseHatFeature();
+builder.Services.AddSenseHatFeature(builder.Configuration);
 builder.Services.AddWeatherFeature();
 
 WebApplication app = builder.Build();
