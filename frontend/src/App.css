@@ -1,3 +1,39 @@
-h1 {
-  color: purple;
+.app-shell {
+  padding: 24px;
+  text-align: left;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.panels {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.panel {
+  min-width: 280px;
+}
+
+.zip-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.zip-input {
+  flex: 1 1 auto;
+  padding: 8px 10px;
+}
+
+.zip-submit,
+.unit-toggle {
+  padding: 8px 12px;
 }
