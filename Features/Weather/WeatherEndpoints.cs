@@ -39,6 +39,9 @@ public static class WeatherEndpoints
             Name: location.Name,
             CountryCode: location.CountryCode,
             TemperatureC: reading.TemperatureC,
-            HumidityPercent: reading.HumidityPercent));
+            HumidityPercent: reading.HumidityPercent,
+            WeatherCode: reading.WeatherCode,
+            PrecipitationProbabilityPercent: reading.PrecipitationProbabilityPercent,
+            WindSpeedMph: reading.WindSpeedMph));
     }
 }

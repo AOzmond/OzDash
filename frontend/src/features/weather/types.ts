@@ -4,4 +4,7 @@ export type WeatherReading = {
   countryCode: string
   temperatureC: number
   humidityPercent: number
+  weatherCode: number
+  precipitationProbabilityPercent: number
+  windSpeedMph: number
 }

@@ -5,4 +5,7 @@ public sealed record WeatherResponse(
     string Name,
     string CountryCode,
     double TemperatureC,
-    double HumidityPercent);
+    double HumidityPercent,
+    int WeatherCode,
+    double PrecipitationProbabilityPercent,
+    double WindSpeedMph);

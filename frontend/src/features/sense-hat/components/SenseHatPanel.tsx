@@ -1,5 +1,6 @@
 import type { TemperatureUnit } from "../../../shared/temperature"
 import { formatTemperature } from "../../../shared/temperature"
+import { ThermometerIcon } from "../../../shared/icons/ThermometerIcon"
 import type { SenseHatReading } from "../types"
 
 type SenseHatPanelProps = {
@@ -22,12 +23,15 @@ export function SenseHatPanel({ temperatureUnit, reading, error }: SenseHatPanel
         <p className="panel-message">Loading Sense HAT data…</p>
       ) : (
         <div className="panel-stats">
-          <p
-            className="temperature-stat"
-            aria-label={`Temperature ${formatTemperature(averageTemperatureC, temperatureUnit)}`}
-          >
-            {formatTemperature(averageTemperatureC, temperatureUnit)}
-          </p>
+          <div className="temperature-row">
+            <p
+              className="temperature-stat"
+              aria-label={`Temperature ${formatTemperature(averageTemperatureC, temperatureUnit)}`}
+            >
+              {formatTemperature(averageTemperatureC, temperatureUnit)}
+            </p>
+            <ThermometerIcon />
+          </div>
           <div className="secondary-stats">
             <div className="humidity-stat">
               <span className="stat-value">{reading.humidityPercent.toFixed(1)}%</span>
